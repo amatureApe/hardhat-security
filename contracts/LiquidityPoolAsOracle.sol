@@ -38,6 +38,8 @@ contract LiquidityPoolAsOracle {
             amount
         );
         require(txFromSuccess, "Failed to transfer from");
+        bool txToSuccess = IERC20(to).transfer(msg.sender, swap_amount);
+        require(txToSuccess, "Failed to transfer to");
     }
 
     function addLiquidity(address tokenAddress, uint256 amount) external {
